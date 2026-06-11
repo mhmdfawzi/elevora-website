@@ -31,10 +31,15 @@ const jetbrains = JetBrains_Mono({
 
 // ── Metadata ─────────────────────────────────────────────────────────────────
 
-const BASE_URL = "https://elevora.dev";
+const BASE_URL = "https://www.elevora.dev";
 
 export const metadata: Metadata = {
+  // Resolves all relative metadata URLs (og:image, canonical, etc.) against
+  // the production origin. Must be set on the root layout.
   metadataBase: new URL(BASE_URL),
+
+  // `template` appends " | Elevora" to every page title automatically.
+  // Pages that need the full string verbatim should use `title: { absolute: "…" }`.
   title: {
     default: "Elevora | Custom Software, SaaS & AI Solutions",
     template: "%s | Elevora",
@@ -52,6 +57,9 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Elevora", url: BASE_URL }],
   creator: "Elevora",
+
+  // Open Graph — og:image is supplied automatically by /opengraph-image.tsx.
+  // These fields set the fallback values inherited by every route.
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -60,22 +68,17 @@ export const metadata: Metadata = {
     title: "Elevora | Custom Software, SaaS & AI Solutions",
     description:
       "Elevora helps startups and enterprises build scalable software products, SaaS platforms, and AI-powered solutions across Saudi Arabia and Egypt.",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Elevora — Custom Software, SaaS & AI Solutions",
-      },
-    ],
   },
+
+  // Twitter card — twitter:image is also resolved from opengraph-image.tsx
+  // when no separate twitter-image file exists (Next.js falls back automatically).
   twitter: {
     card: "summary_large_image",
     title: "Elevora | Custom Software, SaaS & AI Solutions",
     description:
-      "Elevora helps startups and enterprises build scalable software products, SaaS platforms, and AI-powered solutions.",
-    images: ["/og-image.png"],
+      "Elevora helps startups and enterprises build scalable software products, SaaS platforms, and AI-powered solutions across Saudi Arabia and Egypt.",
   },
+
   robots: {
     index: true,
     follow: true,

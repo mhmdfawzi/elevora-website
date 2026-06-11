@@ -10,9 +10,16 @@ export const metadata: Metadata = {
     "Get in touch with Elevora. Tell us about your project and we'll respond within one business day.",
   alternates: { canonical: "/contact" },
   openGraph: {
-    title: "Contact Elevora",
-    description: "Get in touch with Elevora. Tell us about your project.",
+    title: "Contact | Elevora",
+    description:
+      "Get in touch with Elevora. Tell us about your project and we'll respond within one business day.",
     url: "/contact",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact | Elevora",
+    description:
+      "Get in touch with Elevora. Tell us about your project and we'll respond within one business day.",
   },
 };
 

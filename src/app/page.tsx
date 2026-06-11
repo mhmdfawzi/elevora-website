@@ -14,10 +14,26 @@ const CTA         = dynamic(() => import("@/components/CTA"));
 const Footer      = dynamic(() => import("@/components/Footer"));
 
 export const metadata: Metadata = {
-  title: "Elevora | Custom Software, SaaS & AI Solutions",
+  // `absolute` bypasses the root layout's title template so the homepage title
+  // is exactly this string, not "Elevora | Custom … | Elevora".
+  title: {
+    absolute: "Elevora | Custom Software, SaaS & AI Solutions",
+  },
   description:
     "Elevora helps startups and enterprises build scalable software products, SaaS platforms, and AI-powered solutions across Saudi Arabia and Egypt.",
   alternates: { canonical: "/" },
+  openGraph: {
+    title: "Elevora | Custom Software, SaaS & AI Solutions",
+    description:
+      "Elevora helps startups and enterprises build scalable software products, SaaS platforms, and AI-powered solutions across Saudi Arabia and Egypt.",
+    url: "/",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Elevora | Custom Software, SaaS & AI Solutions",
+    description:
+      "Elevora helps startups and enterprises build scalable software products, SaaS platforms, and AI-powered solutions across Saudi Arabia and Egypt.",
+  },
 };
 
 export default function Home() {
