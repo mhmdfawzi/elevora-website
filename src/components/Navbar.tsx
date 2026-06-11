@@ -15,9 +15,9 @@ const NAV_LINKS = [
 
 const monoStyle: React.CSSProperties = {
   fontFamily: "var(--font-jetbrains), monospace",
-  fontSize: "12px",
+  fontSize: "11px",
   lineHeight: "16px",
-  letterSpacing: "0.1em",
+  letterSpacing: "0.08em",
   fontWeight: 500,
   textTransform: "uppercase",
 };
@@ -67,7 +67,7 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop links */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-6">
           {NAV_LINKS.map(({ label, href }) => (
             <Link
               key={label}
@@ -94,7 +94,7 @@ export default function Navbar() {
 
         {/* Mobile toggle */}
         <button
-          className="md:hidden text-black p-1"
+          className="lg:hidden text-black p-1"
           aria-label={menuOpen ? "Close menu" : "Open menu"}
           aria-expanded={menuOpen}
           onClick={() => setMenuOpen((o) => !o)}
@@ -108,7 +108,7 @@ export default function Navbar() {
       {/* Mobile menu */}
       {menuOpen && (
         <div
-          className="md:hidden border-t"
+          className="lg:hidden border-t"
           style={{ backgroundColor: "#fff", borderColor: "#E5E5E5" }}
         >
           <div

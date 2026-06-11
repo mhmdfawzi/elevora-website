@@ -65,9 +65,10 @@ export default function Footer() {
             <span style={monoSm}>Company</span>
             <div className="flex flex-col gap-3">
               {[
-                { label: "Services",   href: "/#capabilities" },
-                { label: "Experience", href: "/#experience"   },
-                { label: "Process",    href: "/#process"      },
+                { label: "Services",    href: "/#capabilities" },
+                { label: "Why Elevora", href: "/#why-elevora" },
+                { label: "Experience",  href: "/#experience"  },
+                { label: "Process",     href: "/#process"     },
                 { label: "Contact",    href: "/contact"       },
               ].map(({ label, href }) => (
                 <Link

@@ -64,10 +64,6 @@ export default function Capabilities() {
               Comprehensive engineering for the modern enterprise.
             </h2>
           </div>
-          <div
-            className="hidden md:block flex-grow mx-12 mb-4"
-            style={{ height: "1px", backgroundColor: "#E5E5E5" }}
-          />
         </div>
 
         {/* Grid */}
