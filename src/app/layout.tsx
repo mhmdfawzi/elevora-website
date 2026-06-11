@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Hanken_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
@@ -111,7 +112,11 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased">
-        <GoogleAnalytics />
+        {/* Suspense is required by Next.js when useSearchParams is used
+            inside a Client Component rendered from the root layout. */}
+        <Suspense fallback={null}>
+          <GoogleAnalytics />
+        </Suspense>
         {children}
       </body>
     </html>
