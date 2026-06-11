@@ -7,15 +7,18 @@ export default function Hero() {
       className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden"
       style={{ backgroundColor: "#0A0A0A" }}
     >
-      {/* Background Image */}
-      <div className="absolute inset-0 z-0">
+      {/* LCP: local WebP, priority-fetched, full-bleed */}
+      <div className="absolute inset-0 z-0" aria-hidden="true">
         <Image
-          src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVKfsLvlOCZmW-YJR4PyaOFUmNsNJBh-9pOoEpLnWl2ZBsOBsumAyJuk7wXAbSyQ65km_ApnfEMUTdsM-5YP2WLqSJukNpLOmCe1yrBCdbVVan7WgMdlHxAgEk2f1RoXDdpCOL6rzZar8Xuq2tX7uicFz0yaDtCwR0-_O33-aiJ-Wqn8xhuvOdJ0Y0_eNdI8qzIE9auBllbJaS9E-amrDHKc8ezdTjXSIu0VU2c2Z70JdS_QAH9M4Oc92Qofh4oyDrowpL3AvMbD0"
-          alt="Premium abstract architectural texture"
+          src="/hero-bg.webp"
+          alt=""
           fill
           className="object-cover opacity-80"
           priority
-          unoptimized
+          quality={85}
+          sizes="100vw"
+          placeholder="blur"
+          blurDataURL="data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAADQAQCdASoIAAUAAUAmJZQCdAEO/gHOAAD++Sf/5m/9bqY2g+E8p+ZP7QAAA=="
         />
         <div className="absolute inset-0 hero-gradient-overlay" />
       </div>
@@ -120,6 +123,7 @@ export default function Hero() {
       <div
         className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
         style={{ color: "rgba(255,255,255,0.4)" }}
+        aria-hidden="true"
       >
         <span
           style={{

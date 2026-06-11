@@ -1,6 +1,34 @@
 import type { Metadata } from "next";
+import { Hanken_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+
+// ── Google Fonts (downloaded at build time by Next.js, self-hosted at runtime)
+// next/font/google fetches the exact files Google serves — identical rendering
+// to the CDN version, but zero render-blocking network requests for users.
+
+const hanken = Hanken_Grotesk({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-hanken",
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const jetbrains = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["500"],
+  variable: "--font-jetbrains",
+  display: "swap",
+});
+
+// ── Metadata ─────────────────────────────────────────────────────────────────
 
 const BASE_URL = "https://elevora.dev";
 
@@ -55,17 +83,31 @@ export const metadata: Metadata = {
   alternates: { canonical: BASE_URL },
 };
 
+// ── Root layout ───────────────────────────────────────────────────────────────
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      className={`${hanken.variable} ${inter.variable} ${jetbrains.variable}`}
+    >
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        {/* Preconnect to font CDN (used by Material Symbols) */}
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* Preload LCP hero image */}
+        <link
+          rel="preload"
+          as="image"
+          href="/hero-bg.webp"
+          type="image/webp"
+          fetchPriority="high"
+        />
+        {/* Material Symbols — needed above-fold for nav icons; small CSS file */}
         <link
           rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;600;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@500&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0,0&display=block"
         />
       </head>
       <body className="antialiased">

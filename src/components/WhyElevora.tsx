@@ -1,4 +1,4 @@
-"use client";
+// Server Component — hover handled by .pillar-card CSS class
 
 const pillars = [
   {
@@ -44,27 +44,23 @@ export default function WhyElevora() {
         className="max-w-[1280px] mx-auto"
         style={{ paddingLeft: "clamp(20px, 6.25vw, 80px)", paddingRight: "clamp(20px, 6.25vw, 80px)" }}
       >
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-0" style={{ borderTop: "1px solid #E5E5E5" }}>
+        <div
+          className="grid grid-cols-1 md:grid-cols-5 gap-0"
+          style={{ borderTop: "1px solid #E5E5E5" }}
+        >
           {pillars.map((p) => (
             <div
               key={p.num}
-              className="group flex flex-col gap-4 transition-colors duration-300"
+              className="pillar-card flex flex-col gap-4"
               style={{
                 padding: "48px",
                 borderLeft: "1px solid #E5E5E5",
                 borderBottom: "1px solid #E5E5E5",
                 ...(p.last ? { borderRight: "1px solid #E5E5E5" } : {}),
-                cursor: "default",
               }}
-              onMouseEnter={(e) =>
-                ((e.currentTarget as HTMLElement).style.backgroundColor = "#fff")
-              }
-              onMouseLeave={(e) =>
-                ((e.currentTarget as HTMLElement).style.backgroundColor = "transparent")
-              }
             >
               <span
-                className="group-hover:opacity-100 transition-opacity"
+                className="pillar-num"
                 style={{
                   fontFamily: "var(--font-jetbrains), monospace",
                   fontSize: "12px",
@@ -73,6 +69,7 @@ export default function WhyElevora() {
                   fontWeight: 700,
                   color: "#000",
                   opacity: 0.4,
+                  transition: "opacity 0.3s",
                 }}
               >
                 {p.num}

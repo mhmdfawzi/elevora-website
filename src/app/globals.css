@@ -30,59 +30,88 @@
   --spacing-stack-sm: 8px;
   --spacing-stack-xs: 4px;
   --spacing-gutter: 24px;
-
-  /* Font families — used as CSS custom properties throughout components */
-  --font-family-sans: "Inter", sans-serif;
-  --font-family-display: "Hanken Grotesk", sans-serif;
-  --font-family-mono: "JetBrains Mono", monospace;
 }
 
-/* Map the variable names used in components */
-:root {
-  --font-inter: "Inter";
-  --font-hanken: "Hanken Grotesk";
-  --font-jetbrains: "JetBrains Mono";
-}
+/* ── Font variables ─────────────────────────────────────────────────────────
+   Set on <html> by next/font/local (layout.tsx). Do NOT re-declare here —
+   a :root rule would override the next/font class and break self-hosting.  */
 
-body {
-  font-family: "Inter", sans-serif;
-  background-color: #ffffff;
-  color: #000000;
-}
-
+/* ── Base ───────────────────────────────────────────────────────────────────*/
 html {
   scroll-behavior: smooth;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: #ffffff;
-}
-::-webkit-scrollbar-thumb {
-  background: #e5e5e5;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #000000;
+body {
+  font-family: var(--font-inter), sans-serif;
+  background-color: #ffffff;
+  color: #000000;
 }
 
+/* ── Custom scrollbar ───────────────────────────────────────────────────────*/
+::-webkit-scrollbar       { width: 6px; }
+::-webkit-scrollbar-track { background: #ffffff; }
+::-webkit-scrollbar-thumb { background: #e5e5e5; }
+::-webkit-scrollbar-thumb:hover { background: #000000; }
+
+/* ── Hero overlay ───────────────────────────────────────────────────────────*/
 .hero-gradient-overlay {
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.6) 100%);
+  background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.6) 100%);
 }
 
+/* ── Process dashed connector ───────────────────────────────────────────────*/
 .process-line {
   background: repeating-linear-gradient(
-    90deg,
-    #ffffff,
-    #ffffff 4px,
-    transparent 4px,
-    transparent 12px
+    90deg, #ffffff, #ffffff 4px, transparent 4px, transparent 12px
   );
 }
 
-/* Material Symbols */
+/* ── Material Symbols ───────────────────────────────────────────────────────*/
 .material-symbols-outlined {
   font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 24;
+  /* Prevent FOUT causing layout shift */
+  font-display: block;
+}
+
+/* ── CSS-only hover effects (replaces JS onMouseEnter/Leave) ────────────────
+   Capability cards                                                        */
+.capability-card {
+  border: 1px solid #E5E5E5;
+  transition: border-color 0.3s, background-color 0.3s;
+}
+.capability-card:hover {
+  border-color: #000;
+  background-color: #F5F5F5;
+}
+
+/* Pillar cards (Why Elevora) */
+.pillar-card {
+  transition: background-color 0.3s;
+}
+.pillar-card:hover {
+  background-color: #ffffff;
+}
+/* Number opacity on parent hover */
+.pillar-card:hover .pillar-num {
+  opacity: 1;
+}
+
+/* Experience cards */
+.experience-card {
+  border: 1px solid #E5E5E5;
+  transition: border-color 0.3s;
+}
+.experience-card:hover {
+  border-color: #000;
+}
+/* Arrow icon box inside experience card */
+.experience-icon {
+  border: 1px solid #E5E5E5;
+  transition: border-color 0.3s, background-color 0.3s;
+}
+.experience-card:hover .experience-icon {
+  border-color: #000;
+  background-color: #000;
+}
+.experience-card:hover .experience-icon .material-symbols-outlined {
+  color: #ffffff;
 }

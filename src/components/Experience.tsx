@@ -1,4 +1,4 @@
-"use client";
+// Server Component — all hover effects handled by .experience-card CSS class
 
 import Link from "next/link";
 
@@ -71,19 +71,14 @@ function ExperienceCard({ title, desc }: { title: string; desc: string }) {
   return (
     <Link
       href="#"
-      className="group relative block overflow-hidden transition-all duration-500"
-      style={{
-        padding: "40px",
-        border: "1px solid #E5E5E5",
-        backgroundColor: "#FFFFFF",
-      }}
-      onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.borderColor = "#000")}
-      onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.borderColor = "#E5E5E5")}
+      className="experience-card group relative block overflow-hidden transition-all duration-500"
+      style={{ padding: "40px", backgroundColor: "#FFFFFF" }}
     >
-      {/* Slide-up bg */}
+      {/* Slide-up background — pure CSS via Tailwind group-hover */}
       <div
         className="absolute inset-0 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"
         style={{ backgroundColor: "#F5F5F5" }}
+        aria-hidden="true"
       />
 
       <div className="relative z-10 flex justify-between items-start mb-8">
@@ -98,20 +93,14 @@ function ExperienceCard({ title, desc }: { title: string; desc: string }) {
         >
           {title}
         </h3>
+
+        {/* Icon box — CSS hover via .experience-card:hover .experience-icon */}
         <div
-          className="w-10 h-10 flex items-center justify-center flex-shrink-0 transition-all duration-300"
-          style={{ border: "1px solid #E5E5E5" }}
-          onMouseEnter={(e) => {
-            (e.currentTarget as HTMLElement).style.borderColor = "#000";
-            (e.currentTarget as HTMLElement).style.backgroundColor = "#000";
-          }}
-          onMouseLeave={(e) => {
-            (e.currentTarget as HTMLElement).style.borderColor = "#E5E5E5";
-            (e.currentTarget as HTMLElement).style.backgroundColor = "transparent";
-          }}
+          className="experience-icon w-10 h-10 flex items-center justify-center flex-shrink-0"
+          aria-hidden="true"
         >
           <span
-            className="material-symbols-outlined group-hover:text-white transition-colors duration-300"
+            className="material-symbols-outlined"
             style={{ fontSize: "20px", color: "#737373" }}
           >
             arrow_outward

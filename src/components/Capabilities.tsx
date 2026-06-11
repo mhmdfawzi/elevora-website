@@ -1,4 +1,4 @@
-"use client";
+// Server Component — no JS shipped for hover effects (CSS-only via .capability-card)
 
 const capabilities = [
   {
@@ -29,10 +29,7 @@ const capabilities = [
 
 export default function Capabilities() {
   return (
-    <section
-      id="capabilities"
-      style={{ padding: "120px 0", backgroundColor: "#FFFFFF" }}
-    >
+    <section id="capabilities" style={{ padding: "120px 0", backgroundColor: "#FFFFFF" }}>
       <div
         className="max-w-[1280px] mx-auto"
         style={{ paddingLeft: "clamp(20px, 6.25vw, 80px)", paddingRight: "clamp(20px, 6.25vw, 80px)" }}
@@ -78,24 +75,13 @@ export default function Capabilities() {
           {capabilities.map((cap) => (
             <div
               key={cap.title}
-              className="group flex flex-col items-start transition-all duration-300"
-              style={{
-                padding: "48px",
-                border: "1px solid #E5E5E5",
-                cursor: "default",
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.borderColor = "#000";
-                (e.currentTarget as HTMLElement).style.backgroundColor = "#F5F5F5";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.borderColor = "#E5E5E5";
-                (e.currentTarget as HTMLElement).style.backgroundColor = "transparent";
-              }}
+              className="capability-card flex flex-col items-start"
+              style={{ padding: "48px" }}
             >
               <span
                 className="material-symbols-outlined mb-4"
                 style={{ fontSize: "32px", color: "#000" }}
+                aria-hidden="true"
               >
                 {cap.icon}
               </span>
