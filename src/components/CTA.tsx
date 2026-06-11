@@ -48,7 +48,7 @@ export default function CTA() {
             From idea to execution, Elevora helps ambitious teams build products that scale.
           </p>
           <Link
-            href="#"
+            href="/contact"
             className="relative z-10 inline-block transition-all duration-300 hover:tracking-[0.2em] active:scale-95"
             style={{
               backgroundColor: "#000",

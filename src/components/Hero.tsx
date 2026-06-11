@@ -78,7 +78,7 @@ export default function Hero() {
 
         <div className="flex flex-col md:flex-row items-center justify-center gap-4">
           <Link
-            href="#"
+            href="/contact"
             className="w-full md:w-auto transition-transform active:scale-95"
             style={{
               backgroundColor: "#fff",

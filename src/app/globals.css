@@ -31,10 +31,23 @@
   --spacing-stack-xs: 4px;
   --spacing-gutter: 24px;
 
-  /* Font families */
+  /* Font families — used as CSS custom properties throughout components */
   --font-family-sans: "Inter", sans-serif;
   --font-family-display: "Hanken Grotesk", sans-serif;
   --font-family-mono: "JetBrains Mono", monospace;
+}
+
+/* Map the variable names used in components */
+:root {
+  --font-inter: "Inter";
+  --font-hanken: "Hanken Grotesk";
+  --font-jetbrains: "JetBrains Mono";
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #ffffff;
+  color: #000000;
 }
 
 html {
