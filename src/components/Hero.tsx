@@ -100,7 +100,7 @@ export default function Hero() {
           </Link>
           <Link
             href="#experience"
-            className="w-full md:w-auto transition-all duration-300 hover:bg-white hover:text-black"
+            className="w-full md:w-auto group transition-all duration-300 hover:bg-white"
             style={{
               border: "1px solid #fff",
               color: "#fff",
@@ -114,14 +114,16 @@ export default function Hero() {
               textAlign: "center",
             }}
           >
-            View Our Work
+            <span className="transition-colors duration-300 group-hover:text-black">
+              View Our Work
+            </span>
           </Link>
         </div>
       </div>
 
-      {/* Scroll Indicator */}
+      {/* Scroll Indicator — hidden on small screens to avoid overlap with buttons */}
       <div
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        className="hidden md:flex absolute bottom-10 left-1/2 -translate-x-1/2 flex-col items-center gap-2"
         style={{ color: "rgba(255,255,255,0.4)" }}
         aria-hidden="true"
       >

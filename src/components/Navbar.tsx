@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -52,13 +53,16 @@ export default function Navbar() {
         style={{ paddingLeft: "clamp(20px, 6.25vw, 80px)", paddingRight: "clamp(20px, 6.25vw, 80px)" }}
       >
         {/* Logo */}
-        <Link
-          href="/"
-          className="text-[28px] font-bold tracking-tighter leading-none"
-          style={{ fontFamily: "var(--font-hanken), sans-serif", color: "#000" }}
-          aria-label="Elevora — home"
-        >
-          Elevora
+        <Link href="/" aria-label="Elevora — home" className="flex items-center">
+          <Image
+            src="/logo-hq.png"
+            alt="Elevora"
+            width={140}
+            height={26}
+            priority
+            quality={100}
+            style={{ objectFit: "contain" }}
+          />
         </Link>
 
         {/* Desktop links */}

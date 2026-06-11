@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const monoSm: React.CSSProperties = {
@@ -33,17 +34,15 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
           {/* Brand */}
           <div className="md:col-span-5">
-            <Link
-              href="/"
-              className="block mb-6 tracking-tighter hover:opacity-80 transition-opacity"
-              style={{
-                fontFamily: "var(--font-hanken), sans-serif",
-                fontSize: "28px",
-                fontWeight: 700,
-                color: "#000",
-              }}
-            >
-              Elevora
+            <Link href="/" className="inline-block mb-6">
+              <Image
+                src="/logo-hq.png"
+                alt="Elevora"
+                width={140}
+                height={26}
+                quality={100}
+                style={{ objectFit: "contain" }}
+              />
             </Link>
             <p
               className="max-w-sm leading-relaxed mb-6"
