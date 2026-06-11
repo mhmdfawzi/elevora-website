@@ -4,28 +4,27 @@ const pillars = [
   {
     num: "01",
     title: "Business first",
-    desc: "We prioritize commercial outcomes over technical vanity projects.",
+    desc: "We prioritize commercial outcomes over technical vanity. Every decision is measured against real business impact.",
   },
   {
     num: "02",
     title: "Senior-led",
-    desc: "Direct access to architects and lead engineers, never junior delegates.",
+    desc: "Architects and lead engineers on every engagement — never junior delegates hidden behind account managers.",
   },
   {
     num: "03",
-    title: "Build for scale",
-    desc: "Infrastructure designed to handle tomorrow's traffic today.",
+    title: "Built for scale",
+    desc: "Systems designed to handle tomorrow's load today. Architecture decisions made with growth as a first-class constraint.",
   },
   {
     num: "04",
     title: "Pragmatic",
-    desc: "Cutting-edge tools applied only where they add real-world value.",
+    desc: "We reach for proven tools before trendy ones. Cutting-edge technology applied only where it adds measurable value.",
   },
   {
     num: "05",
-    title: "Partnership",
-    desc: "Long-term alignment with your vision and product lifecycle.",
-    last: true,
+    title: "Long-term partnership",
+    desc: "We stay aligned with your vision beyond delivery. Elevora operates as a technology partner, not a ticket queue.",
   },
 ];
 
@@ -37,69 +36,143 @@ export default function WhyElevora() {
         backgroundColor: "#F5F5F5",
         borderTop: "1px solid #E5E5E5",
         borderBottom: "1px solid #E5E5E5",
-        overflow: "hidden",
       }}
     >
       <div
         className="max-w-[1280px] mx-auto"
         style={{ paddingLeft: "clamp(20px, 6.25vw, 80px)", paddingRight: "clamp(20px, 6.25vw, 80px)" }}
       >
-        <div
-          className="grid grid-cols-1 md:grid-cols-5 gap-0"
-          style={{ borderTop: "1px solid #E5E5E5" }}
-        >
-          {pillars.map((p) => (
-            <div
-              key={p.num}
-              className="pillar-card flex flex-col gap-4"
+        {/* ── Two-column layout: intro left, cards right ── */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8">
+
+          {/* Left — sticky narrative intro */}
+          <div className="lg:col-span-4 lg:sticky lg:top-32 lg:self-start">
+            <span
+              className="block mb-5"
               style={{
-                padding: "48px",
-                borderLeft: "1px solid #E5E5E5",
-                borderBottom: "1px solid #E5E5E5",
-                ...(p.last ? { borderRight: "1px solid #E5E5E5" } : {}),
+                fontFamily: "var(--font-jetbrains), monospace",
+                fontSize: "11px",
+                letterSpacing: "0.2em",
+                fontWeight: 500,
+                color: "#737373",
+                textTransform: "uppercase",
               }}
             >
-              <span
-                className="pillar-num"
-                style={{
-                  fontFamily: "var(--font-jetbrains), monospace",
-                  fontSize: "12px",
-                  lineHeight: "16px",
-                  letterSpacing: "0.1em",
-                  fontWeight: 700,
-                  color: "#000",
-                  opacity: 0.4,
-                  transition: "opacity 0.3s",
-                }}
-              >
-                {p.num}
-              </span>
-              <div className="flex flex-col gap-2">
-                <h4
-                  style={{
-                    fontFamily: "var(--font-hanken), sans-serif",
-                    fontSize: "20px",
-                    fontWeight: 700,
-                    letterSpacing: "-0.01em",
-                  }}
-                >
-                  {p.title}
-                </h4>
-                <p
-                  style={{
-                    fontFamily: "var(--font-inter), sans-serif",
-                    fontSize: "14px",
-                    lineHeight: "1.6",
-                    color: "#737373",
-                  }}
-                >
-                  {p.desc}
-                </p>
-              </div>
+              Why Elevora
+            </span>
+            <h2
+              className="mb-6"
+              style={{
+                fontFamily: "var(--font-hanken), sans-serif",
+                fontSize: "clamp(32px, 3.5vw, 44px)",
+                lineHeight: "1.1",
+                letterSpacing: "-0.02em",
+                fontWeight: 700,
+                color: "#000",
+              }}
+            >
+              We work<br />differently.
+            </h2>
+            <p
+              style={{
+                fontFamily: "var(--font-inter), sans-serif",
+                fontSize: "16px",
+                lineHeight: "1.75",
+                color: "#737373",
+                maxWidth: "340px",
+              }}
+            >
+              A pragmatic technology partner focused on business outcomes,
+              senior execution, and long-term value.
+            </p>
+
+            {/* Decorative rule */}
+            <div
+              className="mt-10 hidden lg:block"
+              style={{ width: "40px", height: "1px", backgroundColor: "#000" }}
+              aria-hidden="true"
+            />
+          </div>
+
+          {/* Right — principle cards */}
+          <div className="lg:col-span-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-[#E5E5E5]">
+              {pillars.map((p, i) => (
+                <PillarCard key={p.num} {...p} wide={pillars.length % 2 !== 0 && i === pillars.length - 1} />
+              ))}
             </div>
-          ))}
+          </div>
+
         </div>
       </div>
     </section>
+  );
+}
+
+function PillarCard({
+  num,
+  title,
+  desc,
+  wide,
+}: {
+  num: string;
+  title: string;
+  desc: string;
+  wide?: boolean;
+}) {
+  return (
+    <div
+      className={`pillar-card group flex flex-col gap-5 bg-[#F5F5F5]${wide ? " sm:col-span-2" : ""}`}
+      style={{ padding: "40px 36px" }}
+    >
+      {/* Number */}
+      <span
+        className="pillar-num"
+        style={{
+          fontFamily: "var(--font-jetbrains), monospace",
+          fontSize: "11px",
+          letterSpacing: "0.15em",
+          fontWeight: 700,
+          color: "#000",
+          opacity: 0.25,
+          transition: "opacity 0.3s",
+        }}
+      >
+        {num}
+      </span>
+
+      {/* Title */}
+      <h3
+        style={{
+          fontFamily: "var(--font-hanken), sans-serif",
+          fontSize: "20px",
+          lineHeight: "1.2",
+          letterSpacing: "-0.01em",
+          fontWeight: 700,
+          color: "#000",
+        }}
+      >
+        {title}
+      </h3>
+
+      {/* Divider — slides in on hover via CSS */}
+      <div
+        className="pillar-divider"
+        style={{ width: "24px", height: "1px", backgroundColor: "#000" }}
+        aria-hidden="true"
+      />
+
+      {/* Description */}
+      <p
+        style={{
+          fontFamily: "var(--font-inter), sans-serif",
+          fontSize: "14px",
+          lineHeight: "1.75",
+          color: "#737373",
+        }}
+      >
+        {desc}
+      </p>
+    </div>
   );
 }

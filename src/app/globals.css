@@ -85,14 +85,23 @@ body {
 
 /* Pillar cards (Why Elevora) */
 .pillar-card {
-  transition: background-color 0.3s;
+  transition: background-color 0.35s ease, box-shadow 0.35s ease;
+  border-top: 2px solid transparent;
 }
 .pillar-card:hover {
   background-color: #ffffff;
+  border-top-color: #000;
 }
-/* Number opacity on parent hover */
+/* Number: dim → full on hover */
 .pillar-card:hover .pillar-num {
   opacity: 1;
+}
+/* Divider line: short → wider on hover */
+.pillar-divider {
+  transition: width 0.35s ease;
+}
+.pillar-card:hover .pillar-divider {
+  width: 40px;
 }
 
 /* Experience cards */
