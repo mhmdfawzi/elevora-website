@@ -1,9 +1,8 @@
 "use client";
 
-import { useActionState } from "react";
-import { submitContactForm, type FormState } from "./actions";
+import { useState, useRef } from "react";
 
-const initialState: FormState = { status: "idle" };
+type Status = "idle" | "submitting" | "success" | "error";
 
 const labelStyle: React.CSSProperties = {
   fontFamily: "var(--font-jetbrains), monospace",
@@ -29,9 +28,54 @@ const inputStyle: React.CSSProperties = {
 };
 
 export default function ContactForm() {
-  const [state, formAction, pending] = useActionState(submitContactForm, initialState);
+  const [status, setStatus]       = useState<Status>("idle");
+  const [errorMsg, setErrorMsg]   = useState("");
+  const formRef                   = useRef<HTMLFormElement>(null);
 
-  if (state.status === "success") {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setStatus("submitting");
+    setErrorMsg("");
+
+    const fd      = new FormData(e.currentTarget);
+    const payload = {
+      name:    (fd.get("name")    as string).trim(),
+      email:   (fd.get("email")   as string).trim(),
+      company: (fd.get("company") as string).trim(),
+      details: (fd.get("details") as string).trim(),
+    };
+
+    // Client-side guard (API validates too)
+    if (!payload.name || !payload.email || !payload.details) {
+      setErrorMsg("Please fill in all required fields.");
+      setStatus("error");
+      return;
+    }
+
+    try {
+      const res  = await fetch("/api/contact", {
+        method:  "POST",
+        headers: { "Content-Type": "application/json" },
+        body:    JSON.stringify(payload),
+      });
+      const data = await res.json();
+
+      if (!res.ok) {
+        setErrorMsg(data?.error ?? "Something went wrong. Please try again later.");
+        setStatus("error");
+        return;
+      }
+
+      setStatus("success");
+      formRef.current?.reset();
+    } catch {
+      setErrorMsg("Something went wrong. Please try again later.");
+      setStatus("error");
+    }
+  }
+
+  // ── Success state ─────────────────────────────────────────────────────────
+  if (status === "success") {
     return (
       <div
         className="flex flex-col items-start gap-4 py-12"
@@ -42,7 +86,11 @@ export default function ContactForm() {
           className="w-12 h-12 flex items-center justify-center"
           style={{ backgroundColor: "#000" }}
         >
-          <span className="material-symbols-outlined text-white" style={{ fontSize: "24px" }}>
+          <span
+            className="material-symbols-outlined text-white"
+            style={{ fontSize: "24px" }}
+            aria-hidden="true"
+          >
             check
           </span>
         </div>
@@ -56,22 +104,35 @@ export default function ContactForm() {
         >
           Message received.
         </h3>
-        <p style={{ fontFamily: "var(--font-inter), sans-serif", fontSize: "16px", color: "#737373", lineHeight: "1.7" }}>
-          Thank you for reaching out. We&apos;ll review your project and get back to you within one
+        <p
+          style={{
+            fontFamily: "var(--font-inter), sans-serif",
+            fontSize: "16px",
+            color: "#737373",
+            lineHeight: "1.7",
+          }}
+        >
+          Thank you. Your message has been sent successfully. We&apos;ll get back to you within one
           business day.
         </p>
       </div>
     );
   }
 
+  const pending = status === "submitting";
+
+  // ── Form ──────────────────────────────────────────────────────────────────
   return (
-    <form action={formAction} noValidate>
+    <form ref={formRef} onSubmit={handleSubmit} noValidate>
       <div className="flex flex-col gap-6">
         {/* Name + Email */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <div>
             <label htmlFor="name" style={labelStyle}>
-              Name <span aria-hidden="true" style={{ color: "#000" }}>*</span>
+              Name{" "}
+              <span aria-hidden="true" style={{ color: "#000" }}>
+                *
+              </span>
             </label>
             <input
               id="name"
@@ -80,14 +141,18 @@ export default function ContactForm() {
               required
               autoComplete="name"
               placeholder="Jane Smith"
+              disabled={pending}
               style={inputStyle}
               onFocus={(e) => (e.currentTarget.style.borderColor = "#000")}
-              onBlur={(e) => (e.currentTarget.style.borderColor = "#E5E5E5")}
+              onBlur={(e)  => (e.currentTarget.style.borderColor = "#E5E5E5")}
             />
           </div>
           <div>
             <label htmlFor="email" style={labelStyle}>
-              Email <span aria-hidden="true" style={{ color: "#000" }}>*</span>
+              Email{" "}
+              <span aria-hidden="true" style={{ color: "#000" }}>
+                *
+              </span>
             </label>
             <input
               id="email"
@@ -96,9 +161,10 @@ export default function ContactForm() {
               required
               autoComplete="email"
               placeholder="jane@company.com"
+              disabled={pending}
               style={inputStyle}
               onFocus={(e) => (e.currentTarget.style.borderColor = "#000")}
-              onBlur={(e) => (e.currentTarget.style.borderColor = "#E5E5E5")}
+              onBlur={(e)  => (e.currentTarget.style.borderColor = "#E5E5E5")}
             />
           </div>
         </div>
@@ -114,31 +180,36 @@ export default function ContactForm() {
             type="text"
             autoComplete="organization"
             placeholder="Acme Inc."
+            disabled={pending}
             style={inputStyle}
             onFocus={(e) => (e.currentTarget.style.borderColor = "#000")}
-            onBlur={(e) => (e.currentTarget.style.borderColor = "#E5E5E5")}
+            onBlur={(e)  => (e.currentTarget.style.borderColor = "#E5E5E5")}
           />
         </div>
 
         {/* Project Details */}
         <div>
           <label htmlFor="details" style={labelStyle}>
-            Project Details <span aria-hidden="true" style={{ color: "#000" }}>*</span>
+            Project Details{" "}
+            <span aria-hidden="true" style={{ color: "#000" }}>
+              *
+            </span>
           </label>
           <textarea
             id="details"
             name="details"
             required
             rows={6}
+            disabled={pending}
             placeholder="Tell us about your project — what you're building, your timeline, and any specific challenges."
             style={{ ...inputStyle, resize: "vertical", lineHeight: "1.7" }}
             onFocus={(e) => (e.currentTarget.style.borderColor = "#000")}
-            onBlur={(e) => (e.currentTarget.style.borderColor = "#E5E5E5")}
+            onBlur={(e)  => (e.currentTarget.style.borderColor = "#E5E5E5")}
           />
         </div>
 
-        {/* Error */}
-        {state.status === "error" && (
+        {/* Error message */}
+        {status === "error" && (
           <p
             role="alert"
             aria-live="polite"
@@ -148,7 +219,7 @@ export default function ContactForm() {
               color: "#ba1a1a",
             }}
           >
-            {state.message}
+            {errorMsg}
           </p>
         )}
 
