@@ -27,12 +27,21 @@ export const metadata: Metadata = {
     description:
       "Elevora helps startups and enterprises build scalable software products, SaaS platforms, and AI-powered solutions across Saudi Arabia and Egypt.",
     url: "/",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Elevora — Building software that helps businesses grow.",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Elevora | Custom Software, SaaS & AI Solutions",
     description:
       "Elevora helps startups and enterprises build scalable software products, SaaS platforms, and AI-powered solutions across Saudi Arabia and Egypt.",
+    images: ["/og-image.png"],
   },
 };
 

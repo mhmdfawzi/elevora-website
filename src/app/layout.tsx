@@ -58,8 +58,8 @@ export const metadata: Metadata = {
   authors: [{ name: "Elevora", url: BASE_URL }],
   creator: "Elevora",
 
-  // Open Graph — og:image is supplied automatically by /opengraph-image.tsx.
-  // These fields set the fallback values inherited by every route.
+  // Open Graph — static image served from /public/og-image.png.
+  // metadataBase resolves the relative path to the full production URL.
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -68,15 +68,23 @@ export const metadata: Metadata = {
     title: "Elevora | Custom Software, SaaS & AI Solutions",
     description:
       "Elevora helps startups and enterprises build scalable software products, SaaS platforms, and AI-powered solutions across Saudi Arabia and Egypt.",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Elevora — Building software that helps businesses grow.",
+      },
+    ],
   },
 
-  // Twitter card — twitter:image is also resolved from opengraph-image.tsx
-  // when no separate twitter-image file exists (Next.js falls back automatically).
+  // Twitter card — shares the same static image.
   twitter: {
     card: "summary_large_image",
     title: "Elevora | Custom Software, SaaS & AI Solutions",
     description:
       "Elevora helps startups and enterprises build scalable software products, SaaS platforms, and AI-powered solutions across Saudi Arabia and Egypt.",
+    images: ["/og-image.png"],
   },
 
   robots: {
