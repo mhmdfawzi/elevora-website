@@ -54,8 +54,8 @@ export default function Capabilities() {
             <h2
               style={{
                 fontFamily: "var(--font-hanken), sans-serif",
-                fontSize: "48px",
-                lineHeight: "56px",
+                fontSize: "clamp(32px, 3.5vw, 40px)",
+                lineHeight: "1.15",
                 letterSpacing: "-0.01em",
                 fontWeight: 600,
                 color: "#000",

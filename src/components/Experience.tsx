@@ -145,8 +145,9 @@ export default function Experience() {
 
         {/* CTA strip */}
         <div
-          className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 mt-px"
+          className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6"
           style={{
+            marginTop: "72px",
             borderTop: "1px solid #E5E5E5",
             borderLeft: "1px solid #E5E5E5",
             borderRight: "1px solid #E5E5E5",
