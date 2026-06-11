@@ -142,6 +142,48 @@ export default function Experience() {
             <ProjectCard key={project.title} {...project} />
           ))}
         </div>
+
+        {/* CTA strip */}
+        <div
+          className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 mt-px"
+          style={{
+            borderTop: "1px solid #E5E5E5",
+            borderLeft: "1px solid #E5E5E5",
+            borderRight: "1px solid #E5E5E5",
+            borderBottom: "1px solid #E5E5E5",
+            padding: "28px 32px",
+            backgroundColor: "#FFFFFF",
+          }}
+        >
+          <p
+            style={{
+              fontFamily: "var(--font-hanken), sans-serif",
+              fontSize: "18px",
+              fontWeight: 600,
+              letterSpacing: "-0.01em",
+              color: "#000",
+            }}
+          >
+            Interested in building something similar?
+          </p>
+          <a
+            href="/contact"
+            className="flex-shrink-0 transition-opacity duration-200 hover:opacity-80"
+            style={{
+              fontFamily: "var(--font-jetbrains), monospace",
+              fontSize: "11px",
+              letterSpacing: "0.1em",
+              fontWeight: 700,
+              textTransform: "uppercase",
+              backgroundColor: "#000",
+              color: "#fff",
+              padding: "12px 24px",
+              whiteSpace: "nowrap",
+            }}
+          >
+            Book a Consultation
+          </a>
+        </div>
       </div>
     </section>
   );

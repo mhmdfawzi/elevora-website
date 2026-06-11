@@ -31,8 +31,9 @@ const pillars = [
 export default function WhyElevora() {
   return (
     <section
+      id="why-elevora"
       style={{
-        padding: "120px 0",
+        padding: "80px 0",
         backgroundColor: "#F5F5F5",
         borderTop: "1px solid #E5E5E5",
         borderBottom: "1px solid #E5E5E5",
@@ -43,7 +44,7 @@ export default function WhyElevora() {
         style={{ paddingLeft: "clamp(20px, 6.25vw, 80px)", paddingRight: "clamp(20px, 6.25vw, 80px)" }}
       >
         {/* ── Two-column layout: intro left, cards right ── */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8">
 
           {/* Left — sticky narrative intro */}
           <div className="lg:col-span-4 lg:sticky lg:top-32 lg:self-start">
@@ -122,8 +123,8 @@ function PillarCard({
 }) {
   return (
     <div
-      className={`pillar-card group flex flex-col gap-5 bg-[#F5F5F5]${wide ? " sm:col-span-2" : ""}`}
-      style={{ padding: "40px 36px" }}
+      className={`pillar-card group flex flex-col gap-4 bg-[#F5F5F5]${wide ? " sm:col-span-2" : ""}`}
+      style={{ padding: "28px 28px" }}
     >
       {/* Number */}
       <span

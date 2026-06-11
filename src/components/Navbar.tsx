@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 
 const NAV_LINKS = [
   { label: "Services",    href: "/#capabilities" },
+  { label: "Why Elevora", href: "/#why-elevora"  },
   { label: "Experience",  href: "/#experience"   },
   { label: "Process",     href: "/#process"      },
   { label: "Contact",     href: "/contact"       },
@@ -115,14 +116,27 @@ export default function Navbar() {
             style={{ paddingLeft: "clamp(20px, 6.25vw, 80px)", paddingRight: "clamp(20px, 6.25vw, 80px)" }}
           >
             {NAV_LINKS.map(({ label, href }) => (
-              <Link
+              <a
                 key={label}
                 href={href}
                 className="py-4 border-b hover:text-black transition-colors"
                 style={{ ...monoStyle, color: "#737373", borderColor: "#E5E5E5" }}
+                onClick={(e) => {
+                  const hash = href.startsWith("/#") ? href.slice(1) : null;
+                  if (hash) {
+                    e.preventDefault();
+                    setMenuOpen(false);
+                    document.body.style.overflow = "";
+                    const el = document.querySelector(hash);
+                    if (el) el.scrollIntoView({ behavior: "smooth" });
+                  } else {
+                    setMenuOpen(false);
+                    document.body.style.overflow = "";
+                  }
+                }}
               >
                 {label}
-              </Link>
+              </a>
             ))}
             <Link
               href="/contact"
@@ -132,6 +146,10 @@ export default function Navbar() {
                 backgroundColor: "#000",
                 color: "#fff",
                 padding: "12px 16px",
+              }}
+              onClick={() => {
+                setMenuOpen(false);
+                document.body.style.overflow = "";
               }}
             >
               Book a Consultation
