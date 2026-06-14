@@ -45,13 +45,14 @@ export const metadata: Metadata = {
     template: "%s | Elevora",
   },
   description:
-    "Elevora helps startups and enterprises build scalable software products, SaaS platforms, and AI-powered solutions across Saudi Arabia and Egypt.",
+    "Elevora helps startups and enterprises build scalable software products, SaaS platforms, and AI-powered solutions across the GCC and Egypt.",
   keywords: [
     "software consultancy",
     "SaaS development",
     "AI solutions",
     "custom software",
-    "Saudi Arabia",
+    "GCC",
+    "Gulf",
     "Egypt",
     "tech consulting",
   ],
@@ -67,7 +68,7 @@ export const metadata: Metadata = {
     siteName: "Elevora",
     title: "Elevora | Custom Software, SaaS & AI Solutions",
     description:
-      "Elevora helps startups and enterprises build scalable software products, SaaS platforms, and AI-powered solutions across Saudi Arabia and Egypt.",
+      "Elevora helps startups and enterprises build scalable software products, SaaS platforms, and AI-powered solutions across the GCC and Egypt.",
     images: [
       {
         url: "/og-image.png",
@@ -83,7 +84,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Elevora | Custom Software, SaaS & AI Solutions",
     description:
-      "Elevora helps startups and enterprises build scalable software products, SaaS platforms, and AI-powered solutions across Saudi Arabia and Egypt.",
+      "Elevora helps startups and enterprises build scalable software products, SaaS platforms, and AI-powered solutions across the GCC and Egypt.",
     images: ["/og-image.png"],
   },
 

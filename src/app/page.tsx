@@ -20,12 +20,12 @@ export const metadata: Metadata = {
     absolute: "Elevora | Custom Software, SaaS & AI Solutions",
   },
   description:
-    "Elevora helps startups and enterprises build scalable software products, SaaS platforms, and AI-powered solutions across Saudi Arabia and Egypt.",
+    "Elevora helps startups and enterprises build scalable software products, SaaS platforms, and AI-powered solutions across the GCC and Egypt.",
   alternates: { canonical: "/" },
   openGraph: {
     title: "Elevora | Custom Software, SaaS & AI Solutions",
     description:
-      "Elevora helps startups and enterprises build scalable software products, SaaS platforms, and AI-powered solutions across Saudi Arabia and Egypt.",
+      "Elevora helps startups and enterprises build scalable software products, SaaS platforms, and AI-powered solutions across the GCC and Egypt.",
     url: "/",
     images: [
       {
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Elevora | Custom Software, SaaS & AI Solutions",
     description:
-      "Elevora helps startups and enterprises build scalable software products, SaaS platforms, and AI-powered solutions across Saudi Arabia and Egypt.",
+      "Elevora helps startups and enterprises build scalable software products, SaaS platforms, and AI-powered solutions across the GCC and Egypt.",
     images: ["/og-image.png"],
   },
 };

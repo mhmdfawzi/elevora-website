@@ -75,8 +75,8 @@ export default function Hero() {
             color: "rgba(255,255,255,0.8)",
           }}
         >
-          Elevora partners with startups and enterprises to design, build, and scale digital products
-          through software engineering, AI, and strategic technology leadership.
+          Elevora partners with ambitious businesses across the GCC and Egypt to turn complex challenges
+          into scalable digital products that create measurable business impact.
         </p>
 
         <div className="flex flex-col md:flex-row items-center justify-center gap-4">

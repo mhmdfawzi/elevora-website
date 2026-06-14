@@ -141,7 +141,7 @@ export default function ContactPage() {
                     lineHeight: "1.7",
                   }}
                 >
-                  Serving clients across Egypt and Saudi Arabia.
+                  Serving clients across the GCC and Egypt.
                 </p>
               </div>
 

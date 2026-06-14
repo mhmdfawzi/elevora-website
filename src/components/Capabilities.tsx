@@ -25,6 +25,12 @@ const capabilities = [
     description:
       "Integrating LLMs and machine learning into existing workflows to automate complex decision-making.",
   },
+  {
+    icon: "map",
+    title: "GIS & Spatial Intelligence",
+    description:
+      "GIS-powered mapping, spatial analytics, and location-enabled applications.",
+  },
 ];
 
 export default function Capabilities() {
@@ -66,12 +72,12 @@ export default function Capabilities() {
           </div>
         </div>
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {capabilities.map((cap) => (
+        {/* Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6">
+          {capabilities.map((cap, i) => (
             <div
               key={cap.title}
-              className="capability-card flex flex-col items-start"
+              className={`capability-card flex flex-col items-start${i < 3 ? " lg:col-span-2" : " lg:col-span-3"}`}
               style={{ padding: "48px" }}
             >
               <span

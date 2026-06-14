@@ -26,6 +26,11 @@ const pillars = [
     title: "Long-term partnership",
     desc: "We stay aligned with your vision beyond delivery. Elevora operates as a technology partner, not a ticket queue.",
   },
+  {
+    num: "06",
+    title: "GCC market experience",
+    desc: "Hands-on experience delivering products for businesses across Gulf markets and Egypt — with an understanding of regional context, compliance considerations, and user expectations.",
+  },
 ];
 
 export default function WhyElevora() {

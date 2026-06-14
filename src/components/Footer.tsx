@@ -106,7 +106,7 @@ export default function Footer() {
             <div className="flex flex-col gap-4">
               <span style={monoSm}>Location</span>
               <p style={{ fontFamily: "var(--font-inter), sans-serif", fontSize: "15px", color: "#737373", lineHeight: "1.6" }}>
-                Serving clients across Egypt and Saudi Arabia.
+                Serving clients across the GCC and Egypt.
               </p>
             </div>
           </div>
