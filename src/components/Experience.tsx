@@ -43,7 +43,7 @@ const projects = [
     links: [],
   },
   {
-    title: "Dar Manager",
+    title: "Property Management",
     category: "Landlord Management • Property Operations",
     desc: "A custom landlord management web application designed to help property owners manage tenants, units, payments, contracts, and operational workflows in one organized platform.",
     services: ["Product Discovery", "Custom Web Development", "Workflow Automation", "System Design"],
